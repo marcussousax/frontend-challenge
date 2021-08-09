@@ -2,11 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-import './index.css'
+import { GlobalStyles } from './styles'
 
 const AppContainer = () => {
   return (
     <React.StrictMode>
+      <GlobalStyles />
       <App />
     </React.StrictMode>
   )
