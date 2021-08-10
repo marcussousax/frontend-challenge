@@ -1,21 +1,15 @@
 import React from 'react'
-import logo from './logo.svg'
 
-import { Container, Header, Logo } from './styles'
+import Modal from './components/Modal'
+import Header from './components/Header'
+import ProgressBar from './components/ProgressBar'
 
 function App() {
   return (
-    <Container>
-      <Header>
-        <Logo src={logo} alt="Sizebay logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a href="https://sizebay.com" target="_blank" rel="noopener noreferrer">
-          Learn about Sizebay
-        </a>
-      </Header>
-    </Container>
+    <Modal>
+      <Header />
+      <ProgressBar value={30} />
+    </Modal>
   )
 }
 
