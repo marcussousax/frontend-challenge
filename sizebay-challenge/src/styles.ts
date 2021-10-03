@@ -10,11 +10,17 @@ export const GlobalStyles = createGlobalStyle`
   }
 `
 
-const customMediaQuery = (minWidth: number) =>
-  `@media (min-width: ${minWidth}px)`
+const customMediaQuery = (width: number, max?: boolean) => {
+  debugger
+  if (max) {
+    return `@media (max-width: ${width}px)`
+  }
+  return `@media (min-width: ${width}px)`
+}
 export const media = {
   custom: customMediaQuery,
   large: customMediaQuery(900),
   small: customMediaQuery(768),
-  xsmall: customMediaQuery(576),
+  xsmall: customMediaQuery(500),
+  maxXsmall: customMediaQuery(600, true),
 }
