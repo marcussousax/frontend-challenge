@@ -11,7 +11,6 @@ export const GlobalStyles = createGlobalStyle`
 `
 
 const customMediaQuery = (width: number, max?: boolean) => {
-  debugger
   if (max) {
     return `@media (max-width: ${width}px)`
   }
