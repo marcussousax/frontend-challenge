@@ -28,7 +28,9 @@ function Header() {
           <span className="month">{months[date.getMonth()]}</span>
           <span className="year">{date.getFullYear()}</span>
         </p>
-        <p className="weekday">Wednesday</p>
+        <p className="weekday">
+          {date.toLocaleString('default', { weekday: 'long' })}
+        </p>
       </h1>
     </Header.Wrapper>
   )

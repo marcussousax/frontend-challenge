@@ -42,6 +42,7 @@ const Content = styled.div`
   max-width: calc(800px - ${CONTENT_PADDING * 2}px);
 
   ${media.xsmall} {
+    width: 65vw;
     padding: ${CONTENT_PADDING}px;
   }
 `

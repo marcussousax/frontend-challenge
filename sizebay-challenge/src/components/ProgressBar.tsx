@@ -14,7 +14,7 @@ const Progress = styled.progress`
   height: 24px;
   color: #5de290;
   appearance: none;
-  margin: 30px 0;
+  margin: 24px 0;
 
   &::-webkit-progress-bar {
     background-color: #e4e4e4;
