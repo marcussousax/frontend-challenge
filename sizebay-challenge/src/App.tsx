@@ -2,6 +2,7 @@ import React from 'react'
 
 import Modal from './components/Modal'
 import Header from './components/Header'
+import List from './components/List'
 import ProgressBar from './components/ProgressBar'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <Modal>
       <Header />
       <ProgressBar value={30} />
+      <List />
     </Modal>
   )
 }
