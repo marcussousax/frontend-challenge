@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import Filter from '../Filter'
 import SearchInput from '../Search'
 import { media } from '../../styles'
 
-const Controls: React.FC = () => {
+const STATUS = [{ label: 'Done' }, { label: 'Pending' }]
+
+const Filter: React.FC = () => {
   return (
     <Wrapper>
-      <Filter />
+      {STATUS.map((item, index) => (
+        <Button key={index}>{item.label}</Button>
+      ))}
       <Spacer />
       <SearchInput />
     </Wrapper>
@@ -24,8 +27,18 @@ const Wrapper = styled.div`
     flex-direction: row-reverse;
   }
 `
+const Button = styled.button`
+  background: transparent;
+  border: 1px solid #dbdbdb;
+  border-radius: 16px;
+  color: #848484;
+  font-size: 14px;
+  line-height: 1;
+  padding: 8px 16px;
+`
+
 const Spacer = styled.span`
   flex: 1;
 `
 
-export default Controls
+export default Filter

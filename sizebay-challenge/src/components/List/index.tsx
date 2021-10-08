@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Controls from './Controls'
+import Filter from './Filter'
 import { useStore } from '../../useTodoStore'
 
 export interface ITodo {
@@ -16,7 +16,7 @@ const List = () => {
   debugger
   return (
     <>
-      <Controls />
+      <Filter />
       <Ul>
         <Li style={{ padding: 0 }}>
           <AddItem />
