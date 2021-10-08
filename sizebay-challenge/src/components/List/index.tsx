@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Filter from './Filter'
 import { useStore } from '../../useTodoStore'
+import * as S from './styled'
+import ListItem from './Item'
 
 export interface ITodo {
   _id: string
@@ -18,9 +20,9 @@ const List = () => {
     <>
       <Filter />
       <Ul>
-        <Li style={{ padding: 0 }}>
+        <S.Li style={{ padding: 0 }}>
           <AddItem />
-        </Li>
+        </S.Li>
         {todos.map((item: ITodo) => (
           <ListItem key={item._id} item={item} />
         ))}
@@ -72,26 +74,6 @@ const AddItemInput = styled.input`
   overflow: hidden;
   border-radius: 4px;
   line-height: calc(40px - 18px);
-`
-
-const ListItem: React.FC<{
-  item: ITodo
-}> = ({ item }) => {
-  return (
-    <Li>
-      {item.title} - {item.isCompleted ? 'Done' : 'Todo'}
-    </Li>
-  )
-}
-const Li = styled.li`
-  background: #f4f4f4;
-  border: 1px solid #dbdbdb;
-  font-size: 14px;
-  color: #848484;
-  border-radius: 4px;
-  line-height: calc(40px - 18px);
-  padding: 8px 16px;
-  display: flex;
 `
 
 export default List
