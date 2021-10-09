@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useStore } from '../useTodoStore'
+import { ITodo } from './List'
 
-const ProgressBar = ({ value }: { value: number }) => {
-  return (
-    <Progress value={value} max="100">
-      {value} %
-    </Progress>
-  )
+const ProgressBar = () => {
+  // @ts-ignore
+  const todos = useStore((state) => state.todos)
+  const completedTodos = todos.filter((todo: ITodo) => todo.isCompleted)
+  return <Progress value={completedTodos.length} max={todos.length} />
 }
 
 const Progress = styled.progress`

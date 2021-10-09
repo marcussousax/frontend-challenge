@@ -9,7 +9,7 @@ function App() {
   return (
     <Modal>
       <Header />
-      <ProgressBar value={30} />
+      <ProgressBar />
       <List />
     </Modal>
   )
