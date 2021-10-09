@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FaPlusCircle } from 'react-icons/fa'
 import Filter from './Filter'
 import { useStore } from '../../useTodoStore'
 import * as S from './styled'
 import ListItem from './Item'
+import Button from '../Button'
 
 export interface ITodo {
   _id: string
@@ -45,9 +47,7 @@ const AddItem = () => {
   // @ts-ignore
   const { addTodo } = useStore((state) => state)
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-
+  const handleSubmit = () => {
     addTodo(todoValue)
     setTodoValue('')
   }
@@ -60,9 +60,9 @@ const AddItem = () => {
         type={'text'}
         placeholder={'Add new item...'}
       />
-      <button onClick={handleSubmit} type={'submit'}>
-        +
-      </button>
+      <Button variant={'add'} onClick={handleSubmit}>
+        <FaPlusCircle size={18} color={'#fff'} />
+      </Button>
     </>
   )
 }
@@ -74,6 +74,17 @@ const AddItemInput = styled.input`
   overflow: hidden;
   border-radius: 4px;
   line-height: calc(40px - 18px);
+
+  & + button {
+    opacity: 0.5;
+  }
+  &:focus {
+    background: #fff;
+
+    & + button {
+      opacity: 1;
+    }
+  }
 `
 
 export default List
