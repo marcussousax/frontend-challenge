@@ -4,15 +4,15 @@ import { ITodo } from './components/List'
 
 export interface ITodoStore {
   addTodo: (todoItem: string) => void
-  removeTodo: () => null
+  removeTodo: (todoItem: string) => void
+  toggleDone: (todoItem: string) => void
   todos: ITodo[]
 }
 
 export const useStore = create(
   (set): ITodoStore => ({
-    addTodo: (todoItem: string) => {
-      debugger
-      return set((state: ITodoStore) => ({
+    addTodo: (todoItem: string) =>
+      set((state: ITodoStore) => ({
         todos: [
           ...state.todos,
           {
@@ -22,9 +22,20 @@ export const useStore = create(
             createdAt: new Date().getTime(),
           },
         ],
+      })),
+    removeTodo: (todoItem: string) =>
+      set((state: ITodoStore) => ({
+        // @ts-ignore
+        todos: [...state.todos.filter((todo) => todo._id !== todoItem._id)],
+      })),
+    toggleDone: (todoItem: string) => {
+      set((state: ITodoStore) => ({
+        todos: state.todos.map((todo) =>
+          // @ts-ignore
+          todo._id === todoItem._id ? { ...todo, isCompleted: true } : todo,
+        ),
       }))
     },
-    removeTodo: () => null,
     todos: [],
   }),
 )
