@@ -14,21 +14,46 @@ export interface ITodo {
   createAt: string
 }
 
-const List = () => {
-  // @ts-ignore
-  const todos = useStore((state) => state.todos)
+const List = ({
+  todos,
+  filter,
+  setFilter,
+  searchState,
+  setSearchState,
+}: {
+  todos: ITodo[]
+  searchState: any
+  setSearchState: any
+  filter: any
+  setFilter: any
+}) => {
   debugger
   return (
     <>
-      <Filter />
-      <Ul>
-        <S.Li style={{ padding: 0 }}>
-          <AddItem />
-        </S.Li>
-        {todos.map((item: ITodo) => (
-          <ListItem key={item._id} item={item} />
-        ))}
-      </Ul>
+      <Filter
+        filter={filter}
+        setFilter={setFilter}
+        searchState={searchState}
+        setSearchState={setSearchState}
+      />
+      {filter && !todos.length ? (
+        <BlankStateMessage>
+          There are no items marked as {filter.toLowerCase()}.{' '}
+          <u style={{ cursor: 'pointer' }} onClick={() => setFilter('')}>
+            Clear the filter here
+          </u>
+          to see all items.
+        </BlankStateMessage>
+      ) : (
+        <Ul>
+          <S.Li style={{ padding: 0 }}>
+            <AddItem />
+          </S.Li>
+          {todos.map((item: ITodo) => (
+            <ListItem key={item._id} item={item} />
+          ))}
+        </Ul>
+      )}
     </>
   )
 }
@@ -38,6 +63,12 @@ const Ul = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
+`
+
+const BlankStateMessage = styled.p`
+  font-size: 14px;
+  color: #848484;
   margin: 0;
 `
 
@@ -51,7 +82,7 @@ const AddItem = () => {
     addTodo(todoValue)
     setTodoValue('')
   }
-  debugger
+
   return (
     <>
       <AddItemInput
@@ -78,6 +109,7 @@ const AddItemInput = styled.input`
   & + button {
     opacity: 0.5;
   }
+
   &:focus {
     background: #fff;
 
