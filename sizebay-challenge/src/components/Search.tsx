@@ -7,13 +7,11 @@ import { useDebounce } from '../useDebounce'
 const SearchInput = ({ searchState, setSearchState }) => {
   const delayedSearch = useDebounce(searchState, 500)
   // @ts-ignore
-
   React.useEffect(() => {
-    debugger
     if (searchState !== null) {
       setSearchState(delayedSearch)
     }
-  }, [delayedSearch])
+  }, [delayedSearch, searchState, setSearchState])
   debugger
   return (
     <Input
