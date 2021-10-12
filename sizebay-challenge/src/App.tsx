@@ -5,7 +5,6 @@ import Header from './components/Header'
 import List, { ITodo } from './components/List'
 import ProgressBar from './components/ProgressBar'
 import { useStore } from './useTodoStore'
-import styled from 'styled-components'
 
 function App() {
   // @ts-ignore
