@@ -13,20 +13,21 @@ function App() {
   const [search, setSearch] = React.useState('')
 
   let filteredTodos: ITodo[]
-  if (filter === 'Done') {
-    filteredTodos = todos.filter((todo: Partial<ITodo>) => todo.isCompleted)
-  } else if (filter === 'Pending') {
-    filteredTodos = todos.filter((todo: Partial<ITodo>) => !todo.isCompleted)
-  } else {
-    filteredTodos = todos
+  switch (filter) {
+    case 'Done':
+      filteredTodos = todos.filter((todo: Partial<ITodo>) => todo.isCompleted)
+      break
+    case 'Pending':
+      filteredTodos = todos.filter((todo: Partial<ITodo>) => !todo.isCompleted)
+      break
+    default:
+      filteredTodos = todos
   }
 
-  React.useEffect(() => {
-    debugger
-    filteredTodos.filter((x) => x.title.includes(search))
-  }, [search, filteredTodos])
+  if (search) {
+    filteredTodos = filteredTodos.filter((x) => x.title.includes(search))
+  }
 
-  debugger
   return (
     <Modal>
       <Header />

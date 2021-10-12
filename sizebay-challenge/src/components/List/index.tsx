@@ -27,7 +27,6 @@ const List = ({
   filter: any
   setFilter: any
 }) => {
-  debugger
   return (
     <>
       <Filter
@@ -36,11 +35,22 @@ const List = ({
         searchState={searchState}
         setSearchState={setSearchState}
       />
-      {filter && !todos.length ? (
+
+      {filter && !todos.length && (
         <BlankStateMessage>
-          There are no items marked as {filter.toLowerCase()}.{' '}
+          There are no items marked as {filter.toLowerCase()}.
           <u style={{ cursor: 'pointer' }} onClick={() => setFilter('')}>
-            Clear the filter here
+            &nbsp;Clear the filter here &nbsp;
+          </u>
+          to see all items.
+        </BlankStateMessage>
+      )}
+
+      {searchState && !todos.length ? (
+        <BlankStateMessage>
+          Your search found no results.
+          <u style={{ cursor: 'pointer' }} onClick={() => setSearchState('')}>
+            &nbsp;Clean the search here &nbsp;
           </u>
           to see all items.
         </BlankStateMessage>
@@ -69,7 +79,7 @@ const Ul = styled.ul`
 const BlankStateMessage = styled.p`
   font-size: 14px;
   color: #848484;
-  margin: 0;
+  margin: 8px;
 `
 
 const AddItem = () => {

@@ -5,19 +5,21 @@ import { useDebounce } from '../useDebounce'
 
 // @ts-ignore
 const SearchInput = ({ searchState, setSearchState }) => {
-  const delayedSearch = useDebounce(searchState, 500)
+  const [search, setSearch] = React.useState('')
+  const delayedSearch = useDebounce(search, 500)
+
   // @ts-ignore
   React.useEffect(() => {
     if (searchState !== null) {
       setSearchState(delayedSearch)
     }
   }, [delayedSearch, searchState, setSearchState])
-  debugger
+
   return (
     <Input
       placeholder="Search items"
-      value={searchState}
-      onChange={(e) => setSearchState(e.target.value)}
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
       type="search"
     />
   )
