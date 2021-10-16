@@ -38,21 +38,21 @@ const List = ({
 
       {filter && !todos.length && (
         <BlankStateMessage>
-          There are no items marked as {filter.toLowerCase()}.
+          There are no items marked as {filter.toLowerCase()}.&nbsp;
           <u style={{ cursor: 'pointer' }} onClick={() => setFilter('')}>
-            &nbsp;Clear the filter here &nbsp;
+            Clear the filter here
           </u>
-          to see all items.
+          &nbsp;to see all items.
         </BlankStateMessage>
       )}
 
       {searchState && !todos.length ? (
         <BlankStateMessage>
-          Your search found no results.
+          Your search found no results.&nbsp;
           <u style={{ cursor: 'pointer' }} onClick={() => setSearchState('')}>
-            &nbsp;Clean the search here &nbsp;
+            Clean the search here
           </u>
-          to see all items.
+          &nbsp;to see all items.
         </BlankStateMessage>
       ) : (
         <Ul>

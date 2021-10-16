@@ -5,7 +5,7 @@ import { useDebounce } from '../useDebounce'
 
 // @ts-ignore
 const SearchInput = ({ searchState, setSearchState }) => {
-  const [search, setSearch] = React.useState('')
+  const [search, setSearch] = React.useState(searchState)
   const delayedSearch = useDebounce(search, 500)
 
   // @ts-ignore
