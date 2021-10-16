@@ -7,7 +7,13 @@ const ProgressBar = () => {
   // @ts-ignore
   const todos = useStore((state) => state.todos)
   const completedTodos = todos.filter((todo: ITodo) => todo.isCompleted)
-  return <Progress value={completedTodos.length} max={todos.length} />
+
+  return (
+    <>
+      {todos.length === completedTodos.length && <span>Completed</span>}
+      <Progress value={completedTodos.length} max={todos.length}></Progress>
+    </>
+  )
 }
 
 const Progress = styled.progress`
