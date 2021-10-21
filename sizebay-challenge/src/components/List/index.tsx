@@ -22,10 +22,10 @@ const List = ({
   setSearchState,
 }: {
   todos: ITodo[]
-  searchState: any
-  setSearchState: any
-  filter: any
-  setFilter: any
+  searchState: string
+  setSearchState: React.Dispatch<React.SetStateAction<string>>
+  filter: string
+  setFilter: React.Dispatch<React.SetStateAction<string>>
 }) => {
   return (
     <>

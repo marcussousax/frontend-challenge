@@ -3,8 +3,15 @@ import styled from 'styled-components'
 import { media } from '../styles'
 import { useDebounce } from '../useDebounce'
 
-// @ts-ignore
-const SearchInput = ({ searchState, setSearchState }) => {
+export type SearchInputProps = {
+  searchState: string
+  setSearchState: React.Dispatch<React.SetStateAction<string>>
+}
+
+const SearchInput: React.FC<SearchInputProps> = ({
+  searchState,
+  setSearchState,
+}) => {
   const [search, setSearch] = React.useState(searchState)
   const delayedSearch = useDebounce(search, 500)
 
@@ -31,6 +38,7 @@ const Input = styled.input`
   border-radius: 4px;
   line-height: calc(40px - 18px);
   padding: 8px 16px;
+
   ${media.maxXsmall} {
     order: -2;
     width: 100%;

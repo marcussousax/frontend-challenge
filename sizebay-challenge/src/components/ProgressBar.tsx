@@ -4,14 +4,13 @@ import { useStore } from '../useTodoStore'
 import { ITodo } from './List'
 
 const ProgressBar = () => {
-  // @ts-ignore
   const todos = useStore((state) => state.todos)
   const completedTodos = todos.filter((todo: ITodo) => todo.isCompleted)
 
   return (
     <>
       {todos.length === completedTodos.length && <span>Completed</span>}
-      <Progress value={completedTodos.length} max={todos.length}></Progress>
+      <Progress value={completedTodos.length} max={todos.length} />
     </>
   )
 }
@@ -21,7 +20,7 @@ const Progress = styled.progress`
   height: 24px;
   color: #5de290;
   appearance: none;
-  margin: 24px 0;
+  margin: 24px 0 0;
 
   &::-webkit-progress-bar {
     background-color: #e4e4e4;

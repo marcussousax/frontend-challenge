@@ -44,6 +44,7 @@ const Content = styled.div`
   ${media.xsmall} {
     width: 65vw;
     padding: ${CONTENT_PADDING}px;
+    height: 50vh;
   }
 `
 

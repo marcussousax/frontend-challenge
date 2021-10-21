@@ -3,15 +3,15 @@ import styled, { css } from 'styled-components'
 import { FaCheck } from 'react-icons/fa'
 import SearchInput from '../Search'
 import { media } from '../../styles'
-
+import { SearchInputProps } from '../Search'
 const STATUS = [{ label: 'Done' }, { label: 'Pending' }]
 
-const Filter: React.FC<{
-  searchState: any
-  setSearchState: any
-  filter: any
-  setFilter: any
-}> = (props) => {
+export type FilterProps = {
+  filter: string
+  setFilter: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Filter: React.FC<FilterProps & SearchInputProps> = (props) => {
   const handleClick = (item: { label: string }) => {
     if (props.filter === item.label) {
       props.setFilter('')

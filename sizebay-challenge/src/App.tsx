@@ -7,7 +7,6 @@ import ProgressBar from './components/ProgressBar'
 import { useStore } from './useTodoStore'
 
 function App() {
-  // @ts-ignore
   const todos = useStore((state) => state.todos)
   const [filter, setFilter] = React.useState('')
   const [search, setSearch] = React.useState('')
