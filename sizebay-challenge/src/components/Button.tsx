@@ -4,11 +4,16 @@ import styled, { css } from 'styled-components'
 interface IButton {
   variant: 'add' | 'remove' | 'complete' | undefined
   onClick: () => void
+  disabled?: boolean
 }
 
 const Button: React.FC<IButton> = (props) => {
   return (
-    <StyledButton onClick={props.onClick} variant={props.variant}>
+    <StyledButton
+      onClick={props.onClick}
+      disabled={props.disabled}
+      variant={props.variant}
+    >
       {props.children}
     </StyledButton>
   )
@@ -24,7 +29,7 @@ const StyledButton = styled.button<Partial<IButton>>`
   border: none;
   width: 44px;
   background: #4da6b3 0 0 no-repeat padding-box;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -55,14 +55,16 @@ const List = ({
           &nbsp;to see all items.
         </BlankStateMessage>
       ) : (
-        <Ul>
-          <S.Li style={{ padding: 0 }}>
-            <AddItem />
-          </S.Li>
-          {todos.map((item: ITodo) => (
-            <ListItem key={item._id} item={item} />
-          ))}
-        </Ul>
+        <>
+          {!searchState && !filter && <AddItem />}
+          <div style={{ overflow: 'auto' }}>
+            <Ul>
+              {todos.map((item: ITodo) => (
+                <ListItem key={item._id} item={item} />
+              ))}
+            </Ul>
+          </div>
+        </>
       )}
     </>
   )
@@ -94,34 +96,40 @@ const AddItem = () => {
   }
 
   return (
-    <>
+    <AddItemWrapper>
       <AddItemInput
         value={todoValue}
         onChange={(e) => setTodoValue(e.target.value)}
         type={'text'}
         placeholder={'Add new item...'}
       />
-      <Button variant={'add'} onClick={handleSubmit}>
+      <Button disabled={!todoValue} variant={'add'} onClick={handleSubmit}>
         <FaPlusCircle size={18} color={'#fff'} />
       </Button>
-    </>
+    </AddItemWrapper>
   )
 }
+const AddItemWrapper = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+`
 const AddItemInput = styled.input`
   flex: 1;
   padding: 8px 16px;
   background: #f4f4f4;
-  border: none;
-  overflow: hidden;
-  border-radius: 4px;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px 0 0 4px;
+
   line-height: calc(40px - 18px);
 
   & + button {
     opacity: 0.5;
+    border-radius: 0 4px 4px 0;
   }
 
   &:focus {
     background: #fff;
+    outline: none;
 
     & + button {
       opacity: 1;

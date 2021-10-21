@@ -16,7 +16,7 @@ const ListItem: React.FC<{
 
   return (
     <S.Li onClick={() => setIsEditing(!isEditing)} isEditing={isEditing}>
-      <ListItemTitle>
+      <ListItemTitle title={'click to edit'}>
         {item.title} - {item.isCompleted ? 'Done' : 'Todo'}
       </ListItemTitle>
       {isEditing && (
@@ -37,6 +37,7 @@ const ListItemTitle = styled.span`
   border: 1px solid #dbdbdb;
   padding: 8px 16px;
   flex: 1;
+  cursor: pointer;
 `
 
 export default ListItem

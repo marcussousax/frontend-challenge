@@ -40,7 +40,8 @@ const Content = styled.div`
   border-radius: 4px;
   padding: 5vw;
   max-width: calc(800px - ${CONTENT_PADDING * 2}px);
-
+  display: flex;
+  flex-direction: column;
   ${media.xsmall} {
     width: 65vw;
     padding: ${CONTENT_PADDING}px;
