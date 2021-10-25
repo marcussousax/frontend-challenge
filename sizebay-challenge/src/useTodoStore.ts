@@ -10,7 +10,7 @@ export interface ITodoStore {
   todos: ITodo[]
 }
 
-const { persist, purge } = configurePersist({
+const { persist } = configurePersist({
   storage: localStorage,
   rootKey: 'sizebay-frontend-challenge',
 })
