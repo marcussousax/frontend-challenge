@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { FaPlusCircle } from 'react-icons/fa'
 import Filter from './Filter'
 import { useStore } from '../../useTodoStore'
-import * as S from './styled'
 import ListItem from './Item'
 import Button from '../Button'
 
@@ -96,17 +95,19 @@ const AddItem = () => {
   }
 
   return (
-    <AddItemWrapper>
-      <AddItemInput
-        value={todoValue}
-        onChange={(e) => setTodoValue(e.target.value)}
-        type={'text'}
-        placeholder={'Add new item...'}
-      />
-      <Button disabled={!todoValue} variant={'add'} onClick={handleSubmit}>
-        <FaPlusCircle size={18} color={'#fff'} />
-      </Button>
-    </AddItemWrapper>
+    <form onSubmit={handleSubmit}>
+      <AddItemWrapper>
+        <AddItemInput
+          value={todoValue}
+          onChange={(e) => setTodoValue(e.target.value)}
+          type={'text'}
+          placeholder={'Add new item...'}
+        />
+        <Button disabled={!todoValue} variant={'add'}>
+          <FaPlusCircle size={18} color={'#fff'} />
+        </Button>
+      </AddItemWrapper>
+    </form>
   )
 }
 const AddItemWrapper = styled.div`

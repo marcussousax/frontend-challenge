@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const Li = styled.li<{ isEditing?: boolean }>`
+export const Li = styled.li<{ isEditing?: boolean; isCompleted?: boolean }>`
   background: ${({ isEditing }) => (isEditing ? '#fff' : '#f4f4f4')};
   font-size: 14px;
   color: #848484;
@@ -8,7 +8,11 @@ export const Li = styled.li<{ isEditing?: boolean }>`
   line-height: calc(40px - 18px);
   display: flex;
   overflow: hidden;
-  ${({ isEditing }) => isEditing && css``}
+  ${({ isCompleted }) =>
+    isCompleted &&
+    css`
+      text-decoration: line-through;
+    `}
 `
 
 export const Spacer = styled.span`

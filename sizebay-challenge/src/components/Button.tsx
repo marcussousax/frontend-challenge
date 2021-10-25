@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 interface IButton {
   variant: 'add' | 'remove' | 'complete' | undefined
-  onClick: () => void
+  onClick?: () => void
   disabled?: boolean
 }
 
